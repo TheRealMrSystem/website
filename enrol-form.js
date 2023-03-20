@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 
 
-
+// Step 2
 
   $('#step2next').on('click', function() {
     // Check if required fields are valid
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
 
 
-
+// Step 3
 
   // Add event listener to #step3next button
   $('#step3next').on('click', function() {
@@ -143,13 +143,13 @@ $(document).ready(function() {
 
 
 
-
+// Step 4
 
   // Add event listener to #step4next button
   $('#step4next').on('click', function() {
       // Check if required fields are valid
       var enpsScoreValid = ($('input[name=enpsscore]:checked').length > 0);
-      var enpsMessageValid = ($('#enpsmessage').val().length !== 0);
+      var enpsMessageValid = ($('#enpsmessage-textarea').val().length !== 0);
 
       // Show/hide validation alerts
       $('#enpsscore-alert').toggle(!enpsScoreValid);
@@ -179,6 +179,9 @@ $(document).ready(function() {
     
     
 
+  
+  // Step 5
+  
   // Add event listener to #step5next button
   $('#step5next').on('click', function() {
     // Add validation for fields in step 5
