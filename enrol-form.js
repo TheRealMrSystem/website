@@ -208,14 +208,31 @@ $(document).ready(function() {
     $('#step4link').addClass('active');
   });
 
+  
+  
+  
+  
+  
+  
+  
+  
+  // Step 6
+  
   // Add event listener to #step6next button
   $('#step6next').on('click', function() {
-    // Add validation for fields in step 6
-    // ...
-    
+    // Check if radio buttons are selected
+    var sentimentValid = ($('input[name=sentiment]:checked').length > 0);
+    var changeNeededValid = ($('input[name=changeneeded]:checked').length > 0);
+    var changePossibleValid = ($('input[name=changepossible]:checked').length > 0);
+
+    // Show/hide validation alerts
+    $('#sentiment-alert').toggle(!sentimentValid);
+    $('#changeneeded-alert').toggle(!changeNeededValid);
+    $('#changepossible-alert').toggle(!changePossibleValid);
+
     // If all required fields are valid, go to next step
-    if (true) { // Replace "true" with your validation logic
-      // "tap" the the relevant slider nav to skip to next slide
+    if (sentimentValid && changeNeededValid && changePossibleValid) {
+      // "tap" the relevant slider nav to skip to next slide
       $('.w-slider-nav div:nth-child(7)').trigger('tap');
       // Remove "active" class from all other elements
       $('[id^=step]').not('#step7link').removeClass('active');
@@ -226,35 +243,51 @@ $(document).ready(function() {
 
   // Add event listener to #step6prev button
   $('#step6prev').on('click', function() {
-    // "tap" the the relevant slider nav to go back to previous slide
+    // "tap" the relevant slider nav to go back to previous slide
     $('.w-slider-nav div:nth-child(5)').trigger('tap');
     // Remove "active" class from all other elements
     $('[id^=step]').not('#step5link').removeClass('active');
     // Add the "active" class to the relevant menu link
     $('#step5link').addClass('active');
   });
+  
+  
+  
+  
+  
+  
+  
+// Step 7  
+  
+  // Add event listener to #step7next button
+  $('#step7next').on('click', function() {
+    // Check if radio buttons are selected
+    var zoomInstalledValid = ($('input[name=zoominstalled]:checked').length > 0);
+    var hasAsanaLoginValid = ($('input[name=hasasanalogin]:checked').length > 0);
+    var asanaCompetencyValid = ($('input[name=asanacompetency]:checked').length > 0);
+    var asanaSentimentValid = ($('input[name=asanasentiment]:checked').length > 0);
 
-// Add event listener to #submit button (for last slide)
-$('#submit').on('click', function() {
-  // Add validation for fields in last step
-  // ...
+    // Show/hide validation alerts
+    $('#zoominstalled-alert').toggle(!zoomInstalledValid);
+    $('#hasasanalogin-alert').toggle(!hasAsanaLoginValid);
+    $('#asanacompetency-alert').toggle(!asanaCompetencyValid);
+    $('#asanasentiment-alert').toggle(!asanaSentimentValid);
 
-  // If all required fields are valid, submit the form
-  if (true) { // Replace "true" with your validation logic
-    // Submit the form
-    $('#enrolment-form').submit();
-  }
-});
+    // If all required fields are valid, submit the form
+    if (zoomInstalledValid && hasAsanaLoginValid && asanaCompetencyValid && asanaSentimentValid) {
+      $('form').submit();
+    }
+  });
 
-// Add event listener to #step7prev button
-$('#step7prev').on('click', function() {
-  // "tap" the the relevant slider nav to go back to previous slide
-  $('.w-slider-nav div:nth-child(6)').trigger('tap');
-  // Remove "active" class from all other elements
-  $('[id^=step]').not('#step6link').removeClass('active');
-  // Add the "active" class to the relevant menu link
-  $('#step6link').addClass('active');
-});
+  // Add event listener to #step7prev button
+  $('#step7prev').on('click', function() {
+    // "tap" the relevant slider nav to go back to previous slide
+    $('.w-slider-nav div:nth-child(6)').trigger('tap');
+    // Remove "active" class from all other elements
+    $('[id^=step]').not('#step6link').removeClass('active');
+    // Add the "active" class to the relevant menu link
+    $('#step6link').addClass('active');
+  });
 
   // Function to validate email format
   function isValidEmail(email) {
